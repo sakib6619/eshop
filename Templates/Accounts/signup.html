@@ -1,0 +1,74 @@
+{% extends "Home/base.html" %}
+{% load products_tags %}
+{% load static %}
+{% block title %} SingUp {% endblock title %}
+{% block body %}
+<!-- page-banner-area-start -->
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">My account</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                            <nav class="breadcrumb-trail breadcrumbs">
+                                <ul class="breadcrumb-menu">
+                                    <li class="breadcrumb-trail">
+                                        <a href="{% url 'home' %}"><span>Home</span></a>
+                                    </li>
+                                    <li class="trail-item">
+                                        <span>SingUp</span>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-banner-area-end -->
+
+<!-- account-area-start -->
+<div class="account-area mt-70 mb-70">
+    <div class="container">
+        <div class="row">
+            <div style="margin: 0 auto;" class="col-lg-6">
+                <div class="basic-login">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <small>{{message}}</small>
+                    {% endfor %}
+                    {% endif %}
+                    <h5>Register</h5>
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+                        <label for="username">Username<span>*</span></label>
+                        {{form.username}}
+                        {{form.username.errors}}
+                        <label for="email-id">Email Address <span>*</span></label>
+                        {{form.email}}
+                        {{form.email.errors}}
+                        <label for="userpass">Password <span>*</span></label>
+                        {{form.password1}}
+                        {{form.password1.errors}}
+                        <label for="userpass">Confirm Password <span>*</span></label>
+                        {{form.password2}}
+                        {{form.password2.errors}}
+                        <div class="login-action mb-10 fix">
+                            <p>Your personal data will be used to support your experience throughout this website, to
+                                manage access to your account, and for other purposes described in our <a
+                                    href="#">privacy policy</a>.</p>
+                        </div>
+                        <a style="color:black; color:blue;" href="{% url 'login' %}">Have account login here </a>
+                        <button style="margin-top: 1rem;" type="submit" class="tp-in-btn w-100">SingUp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- account-area-end -->
+{% endblock %}

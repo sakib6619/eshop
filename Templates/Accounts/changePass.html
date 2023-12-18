@@ -1,0 +1,65 @@
+{% extends "Home/base.html" %}
+{% load products_tags %}
+{% load static %}
+{% block title %} Password Change {% endblock title %}
+{% block body %}
+<!-- page-banner-area-start -->
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">My account</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>Change Password</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-banner-area-end -->
+
+<!-- account-area-start -->
+<div class="account-area mt-70 mb-70">
+    <div class="container">
+        <div class="row">
+            <div style="margin: 0 auto;" class="col-lg-6">
+                <div class="basic-login mb-50">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <small style="color:red;">{{message}}</small>
+                    {% endfor %}
+                    {% endif %}
+                    <h5>Login</h5>
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+                        <label for="pass">Old Password<span>*</span></label>
+                        {{form.old_password}}
+                        {{form.old_password.errors}}
+                        <label for="pass">New Password <span>*</span></label>
+                        {{form.new_password1}}
+                        {{form.new_password1.errors}}
+                        <label for="pass">Confirm Password <span>*</span></label>
+                        {{form.new_password2}}
+                        {{form.new_password2.errors}}
+                        <button style="margin-top: 1rem;" type="submit" class="tp-in-btn w-100">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- account-area-end -->
+{% endblock %}

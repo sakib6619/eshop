@@ -1,0 +1,59 @@
+{% extends "Home/base.html" %}
+{% load products_tags %}
+{% load static %}
+{% block title %} Login {% endblock title %}
+{% block body %}
+<!-- page-banner-area-start -->
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">My account</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>Profile</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-banner-area-end -->
+<div class="container">
+    <div>
+        <img src="" alt="Profile Picture">
+        <a href="">Edit Photo</a>
+    </div>
+
+    <div class="contact-info">
+        <p><span>User Name:</span>{{user.username}}</p>
+        <p><span>Name:</span>{{user.first_name}} {{user.last_name}}</p>
+        <p><span>Email:</span> {{user.email}}</p>
+        <p><span>Phone:</span> +1-123-456-7890</p>
+        <p><span>Gender:</span> Male</p>
+        <p><span>Address:</span> Dhaka, Bangladesh</p>
+    </div>
+    <div>
+        <a href="#">Edit Profile</a>
+    </div>
+    <div>
+        <a href="{% url 'change_pass' %}">Change Password</a>
+    </div>
+    <div>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>
+<div>
+</div>
+{% endblock %}
